@@ -86,4 +86,6 @@ const OpenedCard = () => {
   )
 }
 
+// could add https://codesandbox.io/s/framer-motion-2-shared-drag-gesture-5trtt?file=/src/App.js
+
 export default OpenedCard
