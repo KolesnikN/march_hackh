@@ -11,14 +11,13 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
 }
 
 body {
+  overscroll-behavior: none;
   background: #151515;
   color: #a0a0a0;
   font-family: 'Inter var', sans-serif;
-  user-select: none;
 }
 
 h1 {

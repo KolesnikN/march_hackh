@@ -1,15 +1,11 @@
-import React, { Route, Routes } from 'react-router-dom'
+import { Canvas } from '@react-three/fiber'
+import ParsedCards from './Card'
+import { state } from './util'
 
-import { CanvasComponent } from './Canvas'
-import OpenedCard from './OpenedCard'
+const App = () => (
+  <Canvas gl={{ antialias: false }} dpr={[1, 1.5]} onPointerMissed={() => (state.clicked = null)}>
+    <ParsedCards />
+  </Canvas>
+)
 
-export const App = ({ images }) => {
-  return (
-    <>
-      <CanvasComponent />
-      <Routes>
-        <Route path="/card" component={() => <OpenedCard images={images} />} />
-      </Routes>
-    </>
-  )
-}
+export default App

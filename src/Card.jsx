@@ -1,15 +1,12 @@
 import * as THREE from 'three'
 
-import { Image, useScroll } from '@react-three/drei'
+import { Image, Scroll, ScrollControls, useScroll } from '@react-three/drei'
 import { damp, state } from './util'
+import { useFrame, useThree } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 
-import OpenedCard from './OpenedCard'
-import { createBrowserHistory } from 'history'
-import { useFrame } from '@react-three/fiber'
+import { Minimap } from './Minimap'
 import { useSnapshot } from 'valtio'
-
-const customHistory = createBrowserHistory()
 
 const Card = ({ index, position, scale, c = new THREE.Color(), ...props }) => {
   const ref = useRef()
@@ -18,7 +15,7 @@ const Card = ({ index, position, scale, c = new THREE.Color(), ...props }) => {
   const [hovered, hover] = useState(false)
 
   const openCard = () => {
-    document.location.href = '/card'
+    document.location.href = '/info'
   }
   const click = () => (state.clicked = index === clicked ? openCard() : index)
   const over = () => hover(true)
@@ -42,19 +39,26 @@ const Card = ({ index, position, scale, c = new THREE.Color(), ...props }) => {
   })
   return (
     <>
-      <Image
-        ref={ref}
-        {...props}
-        position={position}
-        scale={scale}
-        onClick={click}
-        onPointerOver={over}
-        onPointerOut={out}
-        to={'/card'}
-        title={'enter'}
-      />
+      <Image ref={ref} {...props} position={position} scale={scale} onClick={click} onPointerOver={over} onPointerOut={out} />
     </>
   )
 }
 
-export default Card
+const ParsedCards = ({ size = 0.7, gap = 0.15 }) => {
+  const { urls: topics } = useSnapshot(state)
+  const { width } = useThree((state) => state.viewport)
+  const xW = size + gap
+
+  return (
+    <ScrollControls horizontal damping={10} pages={(width - xW + topics.length * xW) / width}>
+      <Minimap />
+      <Scroll>
+        {
+          topics.map((topic, index) => <Card key={index} index={index} position={[index * xW, 0, 0]} scale={[size, 4, 1]} url={topic} />) /* prettier-ignore */
+        }
+      </Scroll>
+    </ScrollControls>
+  )
+}
+
+export default ParsedCards
