@@ -6,15 +6,37 @@ import App from './App'
 import OpenedCard from './OpenedCard/OpenedCard'
 import ReactDOM from 'react-dom'
 import { Suspense } from 'react'
+import styled from 'styled-components'
+
+const Footer = styled.a`
+  pointer-events: all;
+  color: #a0a0a0;
+  text-decoration: none;
+`
+
+const HackhathonInfo = styled.div`
+  position: absolute;
+  color: red;
+  top: 0px;
+  right: 80px;
+  font-size: 13px;
+`
+
+const OverlayStyle = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  overflow: none;
+  pointer-events: none;
+  width: 100%;
+`
 
 const Overlay = () => {
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none', width: '100%', height: '100%' }}>
-      <a href="https://deriv.com/" style={{ position: 'absolute', bottom: 40, left: 90, fontSize: '13px' }}>
-        Dev Wear Prada
-      </a>
-      <div style={{ position: 'absolute', bottom: 40, right: 40, fontSize: '13px' }}>Deriv Hackhathon - March 2022</div>
-    </div>
+    <OverlayStyle>
+      <Footer href="https://deriv.com/">Dev Wear Prada</Footer>
+      <HackhathonInfo>Deriv Hackhathon - March 2022</HackhathonInfo>
+    </OverlayStyle>
   )
 }
 

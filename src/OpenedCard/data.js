@@ -2,13 +2,13 @@ export default [
   {
     name: 'Binary/Deriv',
     description: '#a8edea → #fed6e3',
-    css: 'linear-gradient(to top, #a8edea 0%, #fed6e3 100%)',
+    css: 'linear-gradient(to top, #a8edea 0%, #f5576c 100%)',
     height: 200
   },
   {
     name: 'Derix GO',
     description: '#f5f7fa → #c3cfe2',
-    css: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)',
+    css: 'linear-gradient(135deg, #f5f7fa 0%, #f093fb 100%)',
     height: 400
   },
   {
@@ -26,7 +26,7 @@ export default [
   {
     name: 'Deriv Academy',
     description: '#fdfbfb → #ebedee',
-    css: 'linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%)',
+    css: 'linear-gradient(-225deg, #E3FDF5 0%, #f093fb 100%)',
     height: 400
   },
   {

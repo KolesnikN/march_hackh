@@ -37,14 +37,11 @@ const Card = ({ index, position, scale, c = new THREE.Color(), ...props }) => {
     )
     ref.current.material.color.lerp(c.set(hovered || clicked === index ? 'white' : '#aaa'), hovered ? 0.3 : 0.1)
   })
-  return (
-    <>
-      <Image ref={ref} {...props} position={position} scale={scale} onClick={click} onPointerOver={over} onPointerOut={out} />
-    </>
-  )
+
+  return <Image ref={ref} {...props} position={position} scale={scale} onClick={click} onPointerOver={over} onPointerOut={out} />
 }
 
-const ParsedCards = ({ size = 0.7, gap = 0.15 }) => {
+const Cards = ({ size = 0.7, gap = 0.15 }) => {
   const { urls: topics } = useSnapshot(state)
   const { width } = useThree((state) => state.viewport)
   const xW = size + gap
@@ -61,4 +58,4 @@ const ParsedCards = ({ size = 0.7, gap = 0.15 }) => {
   )
 }
 
-export default ParsedCards
+export default Cards
